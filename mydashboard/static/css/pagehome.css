@@ -1,0 +1,274 @@
+.banner {
+  color: black;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: black;
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+/* Main navbar */
+.navbar-wagon {
+  background: transparent;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+/*  width: 100%;
+*/}
+
+
+/* Right section */
+.navbar-wagon-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Basic navbar item */
+.navbar-wagon-item {
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+/* Navbar link */
+.navbar-wagon-link {
+  color: #616668;
+  font-size: 14px;
+}
+.navbar-wagon-link:hover {
+  color: #da552f;
+  text-decoration: none;
+}
+
+
+/*Footer visualization*/
+.footer {
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+.footer-links a {
+  color: black;
+  opacity: 0.15;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.footer .fa-heart {
+  color: #D23333;
+}
+.body {
+  background-color: #eff0f2;
+}
+
+
+
+/*Générique*/
+
+.general {
+  color: #585858;
+  font-weight: 300;
+}
+
+.white-container {
+  width: 100%;
+  text-align: center;
+  padding:20px;
+}
+
+.grey-container {
+  background-color: #E9EDF8;
+  padding:20px;
+}
+
+.titles {
+  text-align: center;
+}
+
+.title {
+  border-bottom: solid 2px #000;
+  display: inline;
+  padding-bottom: 3px;
+  font-family: "Batang";
+}
+
+.subtitle {
+  font-style: italic;
+  margin-bottom: 20px;
+  font-weight: lighter;
+}
+
+.conteneur {
+    display: flex;
+    justify-content: space-around;
+}
+
+.align-left {
+  float: left;
+}
+.align-right {
+  float: right;
+}
+
+/*Project section*/
+
+#benefits {
+  text-align: left;
+  justify-content: left;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.element {
+  height:100px;
+  margin-bottom: 15px;
+}
+
+/*Product section*/
+
+#intro-sentence p {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.bloc {
+  text-align: center;
+  width: 200px;
+}
+
+.element-second {
+  height:100px;
+  margin-bottom: 15px;
+}
+
+#usecases h2 {
+  text-align: center;
+  font-family: "Batang";
+}
+
+.perso {
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  width:400px;
+  height: 250px;
+  padding:10px;
+  margin:10px;
+}
+
+.perso img {
+  width:50px;
+  height: auto;
+  padding-bottom: 7px;
+  margin:10px;
+}
+
+/*Stack section*/
+
+.first img {
+  height:150px;
+}
+
+.rest img {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.rest p {
+  margin-top: 35px;
+}
+
+/*2nd banner section*/
+
+#banner2 {
+  height: 50vh;
+  opacity: 0.6;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+}
+
+/*Team section*/
+
+.team {
+  text-align: center;
+}
+
+.team img {
+  border-radius: 50%;
+  height:200px;
+  filter:grayscale(100%);
+  margin-bottom: 15px;
+}
+
+.team p {
+  font-size: 18px;
+}
+
+/*Testimonials section*/
+
+#testimonials h3 {
+  font-family: "Batang";
+}
+
+/*Reach Out section*/
+
+#reachout-container {
+  position: relative;
+  height: 30vh;
+}
+
+#reachout-block {
+  position: absolute;
+  height: 30vh;
+  background-size: cover !important;
+  opacity: 0.6;
+  filter:grayscale(100%);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#reachout-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 5%;
+  padding-right: 1%;
+  padding-left: 1%;
+}
+

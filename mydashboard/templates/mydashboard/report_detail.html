@@ -1,0 +1,131 @@
+{% extends 'mydashboard/base.html' %}
+
+{% block content %}
+
+<script>
+{% block jquery %}
+
+var endpoint = '/api/chart/data/'
+var defaultData = []
+var labels = [];
+$.ajax({
+  method: "GET",
+  url: endpoint,
+  success: function(data){
+    labels = data.labels
+    defaultData = data.default
+    setChart()
+  },
+  error: function(error_data){
+    console.log("error")
+    console.log(error_data)
+    }
+  })
+
+function setChart(){
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+          data: defaultData,
+          label: "Date d'enregistrement",
+          borderColor: "#3e95cd",
+          fill: false
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Graphe de suivi du médicament'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            max: 25,
+            min: 15,
+            stepSize: 1
+          }
+        }]
+      }
+    }
+  });
+}
+
+function openTab(evt, action) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tab_content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tab");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(action).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+{% endblock %}
+</script>
+
+<div class="container" class="col-lg-offset-2 col-lg-8 col-sm-4">
+  <br>
+  <h1>Votre rapport de traçabilité</h1>
+  <br>
+  <br>
+  <p class="intro">Votre microbit vérifie la température de votre médicament pour vous.</p>
+  <br>
+  <br>
+  <div class="visual">
+    <div id="temperature"><p>23°C</p></div>
+  </div >
+
+  <br>
+
+  <div class="tabs">
+    <a class="tab active" href="#Table" onclick="openTab(event, 'Table')">Table</a>
+    <a class="tab" href="#Graphe" onclick="openTab(event, 'Graphe')">Graphe</a>
+  </div>
+
+  <div id="Graphe" class="tab_content">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <div id="Table" class="tab_content active">
+    <table style="width:100%">
+      <tr>
+        <th>Identifiant</th>
+        <th>Température</th>
+        <th>Date d'enregistrement</th>
+      </tr>
+      {% for temperature in temperatures %}
+      <tr>
+        <td>{{ temperature.id }}</td>
+        <td>{{ temperature.temperature }}</td>
+        <td>{{ temperature.registered_date }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <br>
+  <a href="{% url 'report_list' %}" class="btn btn-primary"><span>Back</span></a>
+
+</div>
+<br>
+
+
+{% endblock %}
+
+
+
+

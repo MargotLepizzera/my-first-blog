@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import include
 from django.conf.urls import url
 from django.contrib import admin
+# from django.contrib.auth import views as auth_views
+# from django.views.generic.base import TemplateView
 
 urlpatterns = [
+    #M'envoie vers l'admin quand je mets /admin
     url(r'^admin/', admin.site.urls),
-    url(r'', include('blog.urls')),
+    url(r'', include('mydashboard.urls')),
 ]

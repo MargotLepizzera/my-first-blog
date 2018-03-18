@@ -1,0 +1,269 @@
+{% load staticfiles %}
+
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+
+  <link rel="stylesheet" href="{% static 'css/pagehome.css' %}">
+</head>
+<body class="general">
+
+
+<div class="banner" style="background-image: url('static/image.jpeg');">
+      <div class="banner-content">
+        <h1>ELIOT</h1>
+        <p>The first pharmaceutical smart packaging</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'report_list' %}">Find out more</a>
+      </div>
+      <div class="navbar-wagon">
+        <!-- Right Navigation -->
+        <div class="navbar-wagon-right hidden-xs hidden-sm">
+        	<a href="#project"  class="navbar-wagon-item navbar-wagon-link">Project</a>
+        	<a href="#product"  class="navbar-wagon-item navbar-wagon-link">Product</a>
+        	<a href="#stack"  class="navbar-wagon-item navbar-wagon-link">Stack</a>
+        	<a href="#team"  class="navbar-wagon-item navbar-wagon-link">Team</a>
+<!--             <a href="{% url 'home'%}"  class="navbar-wagon-item navbar-wagon-link">Home</a>
+            <a href="{% url 'report_list'%}"  class="navbar-wagon-item navbar-wagon-link">Dashboard</a> -->
+            {% if user.authentificated %}
+              <a href="{% url 'logout'%}"  class="navbar-wagon-item navbar-wagon-link">Logout</a>
+            {% else %}
+              <a href="{% url 'login'%}"  class="navbar-wagon-item navbar-wagon-link">Login</a>
+            {% endif %}
+        </div>
+      </div>
+</div>
+
+<section id="project">
+	<div class="white-container">
+		<div class="titles">
+			<h2 class="title">PROJECT</h2>
+			<h3 class="subtitle">Why did we build Eliot?</h3>
+		</div>
+		<div id="benefits">
+		<ul>
+			<li>A lot of vaccination must kept between +2°C and +8°C: Measles, rubella, yellow fever, hepatitis B, meningitis, influenza, tetanus, polio, whooping cough, typhoid, chicken pox, etc.</li>
+			<li>Most medicines treating cancer, HIV, hemophilia, multiple sclerosis, leukemia, insulin-dependent diabetes & orphan diseases are also very heat-sensitive.</li>
+			<li>HUG counts +200 heat-sensitive medicines that need to be carefully monitored.</li>
+		</ul>
+		</div>
+		<div class="conteneur">
+		    <div>
+				<!--#424242 pour le code couleur pour les flaticon à editer-->
+		    	<img src= 'static/fingerprint2.png' class="element"/>
+		    	<p>Customize</p>
+		    </div>
+		    <div>
+		    	<img src= 'static/collect2.png' class="element"/>
+		    	<p>Collect</p>
+		    </div>
+		    <div>
+		    	<img src= 'static/monitor2.png' class="element"/>
+		    	<p>Monitor</p>
+		    </div>
+		</div>
+	</div>
+</section>
+
+<section id="product">
+	<div class="grey-container">
+
+		<div class="titles">
+		    <h2 class="title">PRODUCT</h2>
+		    <h3 class="subtitle">How does Eliot work?</h3>
+		</div>
+
+		<div id="intro-sentence">
+	    	<p>Eliot is the first pharmaceutical dedicated smart packaging. It allows end-to-end temperature monitoring and lets the user know about the medicine validity.</p>
+		</div>
+
+	    <div class="conteneur">
+	    	<div class="bloc">
+	        	<img src= 'static/display2.png' class="element-second"/>
+	        	<p class="bloc-caption">By default, Eliot displays the drug’s temperature</p>
+		    </div>      
+		    <div class="bloc">
+		     <img src= 'static/rotate2.png' class="element-second"/>
+		    </div>
+		    <div class="bloc">
+		      <img src= 'static/threshold2.png' class="element-second"/>
+		      <p>Eliot allows users to quickly set up maximum & minimum temperature thresholds</p>
+		    </div>
+		    <div class="bloc">
+		     <img src= 'static/rotate2.png' class="element-second"/>
+		    </div>
+		    <div class="bloc">
+		      <img src= 'static/thermometer2.png' class="element-second"/>
+		      <p>Whenever temperature gets too high or too low, Eliot warns you by displaying a message and emitting a sound</p>
+		    </div>
+		    <div class="bloc">
+		     <img src= 'static/rotate2.png' class="element-second"/>
+		    </div>
+		    <div class="bloc">
+		      <img src= 'static/monitoring2.png' class="element-second"/>
+		      <p>Eliot builds a traceability report that the user can regularly check to make sure medicine are still valid</p>
+			</div>      
+		</div>
+
+		<div id = "usecases">
+		    <h2>Use Cases</h2>
+			<div class="conteneur">
+		    	<div class="row">
+			    	<div class="col-xs-12 col-sm-4 perso">
+				    	<img src='static/doctor.svg'/>
+				    	<p>Lisa is a pharmacist. She very regularly deals with heat-sensitive medicines such as cancer, HIV or multiple sclerosis treatments. She knows most transport companies monitor drugs’ temperature but she wants to make absolutely sure she does not sell inefficient products to her beloved customers.</p>
+				    </div>
+				    <div class="col-xs-12 col-sm-4 perso">
+				    	<img src='static/girl.svg'/>
+				    	<p>Lola travels a lot. She has diabetes so she regularly takes medicine. When she is in hot countries, she is sometimes afraid her drugs are no longer effective because of the heat. She would like to have a device allowing her to track her medicine temperature.</p>
+				    </div>
+				    <div class="col-xs-12 col-sm-4 perso">
+				    	<img src='static/boy.svg'/>
+				    	<p>Aleksander needs to do the tetanus vaccination. He bought the product at the drugstore and will bring it to the doctor next week for the injection. He does not know about heat-sensitive medicine and leaves the tetanus vaccination on his desk, in the 25°C environement for 5 days. He has not idea the medicine is probably no longer efficient.</p>
+					</div>
+		    	</div> 
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section id="stack">
+	<div class="white-container">
+		<div class="titles">
+	    	<h2 class="title">STACK</h2>
+	    	<h3 class="subtitle">What is Eliot made of?</h3>
+	    </div>
+
+	   <!--  <div class="conteneur"> -->
+
+		<div class="row">
+			<div class="col-sm-6 first">
+				<img src='static/hardware.svg'/>
+				<p>HARDWARE</p>
+					<div class="row">
+						<div class="col-sm-6 rest">
+							<img src='static/microbit.png'/>
+						</div>
+						<div class="col-sm-6 rest">
+							<p>Micro:bit with an embedded temperature sensor</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 rest">
+							<img src='static/battery.jpg'/>
+						</div>
+						<div class="col-sm-6 rest">
+							<p>Micro:bit enclosed battery box</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 rest">
+							<img src='static/minispeaker.jpg'/>
+						</div>
+						<div class="col-sm-6 rest">
+							<p>Micro:bit Mini- Speaker</p>
+						</div>
+					</div>
+			</div>
+			<div class="col-sm-6 first">
+				<img src='static/software.svg'/>
+				<p>SOFTWARE</p>
+					<div class="row">
+						<div class="col-sm-6 rest">
+							<img src='static/micropython.jpg'/>
+						</div>
+						<div class="col-sm-6 rest">
+							<p>MicroPython</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 rest">
+							<img src='static/htmlcss.svg'/>
+						</div>
+						<div class="col-sm-6 rest">
+							<p>HTML/CSS</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 rest">
+							<img src='static/javascript.png'/>
+						</div>
+						<div class="col-sm-6 rest">
+							<p>JavaScript</p>
+						</div>
+					</div>
+			</div>
+		</div>
+
+		</div>
+
+	</div>
+</section>
+
+
+<div id="banner2" style="background-image: url('static/image2.jpg');">
+</div>
+
+<section id="team">
+	<div class="grey-container">
+		<div class="titles">
+	    	<h2 class="title">TEAM</h2>
+	    	<h3 class="subtitle">Who built Eliot?</h3>
+		</div>
+		<div class="conteneur">
+			<div class="col-xs-12 col-sm-4 team">
+			    	<img src='static/eleonore.jpg'/>
+			    	<p>Eléonore DELAIRE</p>
+			</div>
+			<div class="col-xs-12 col-sm-4 team">
+			    	<img src='static/camille.jpeg'/>
+			    	<p>Camille RAPINAT</p>
+			</div>
+			<div class="col-xs-12 col-sm-4 team">
+			    	<img src='static/margot.jpeg'/>
+			    	<p>Margot LEPIZZERA</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="white-container">
+	<div id="testimonials">
+		<h3>“What a great great product! Eliot allows me to regularly check the temperature journey of all the heat-sensitive medicines that arrive at my drugstore. It completely removed my fear from selling inefficient heat-sensitive products to my customers.”</h3>
+		<p>Véronique, pharmacist</p>
+	</div>
+</div>
+
+<div id="reachout-container">
+	<div id="reachout-block" style="background-image: url('static/image4.jpg');"></div>
+	<div id="reachout-text">
+		<h4 class = "align-left">Want to know more about Eliot?</h4>
+		<a class="btn btn-primary btn-lg align-right" href="{% url 'report_list' %}">Reach Out!</a>
+	</div>
+</div>
+
+
+
+
+<!-- Pour gérer le cross devices avec nombre de colonnes pas bon, utiliser l'offset
+https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp -->
+
+<div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+     This website was made with <i class="fa fa-heart"></i> by Margot, Camille and Eléonore
+    </div>
+  </div>
+</body>
+

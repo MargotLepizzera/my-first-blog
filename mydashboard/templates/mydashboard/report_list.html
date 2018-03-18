@@ -1,0 +1,32 @@
+{% extends 'mydashboard/base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+  <br>
+  <h1>Your Dashboard</h1>
+  <br>
+  {% for report in reports %}
+  <div class="row">
+    <div class="col-xs-12 col-lg-10">
+      <div class="card">
+        <div class="card-description">
+          <h2>{{ report.title}}</h2>
+          <p>{{ report.text}}</p>
+        </div>
+        <div class="card-date">{{ report.published_date}}</div>
+        <a class="card-link" href="{% url 'report_detail' pk=report.pk %}">Learn more</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <br>
+  <a href="{% url 'report_new' %}" class="btn btn-primary"><span>Ajouter un nouveau rapport</span></a>
+</div>
+<br>
+
+{% endblock %}
+
+
+

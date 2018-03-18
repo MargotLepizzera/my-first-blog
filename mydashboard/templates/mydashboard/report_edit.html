@@ -1,0 +1,18 @@
+{% extends 'mydashboard/base.html' %}
+
+{% block content %}
+<div class="container" style="height:100%; width:100%; background-color: #eff0f2">
+  <div class="form">
+    <h1>New Report</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+      {{ form.as_p }}
+      <p>Connect your microbit and </p>
+      <button type="submit" class="save btn btn-primary">Save data in this report</button>
+    </form>
+
+    <a href="{% url 'report_list' %}" class="top-menu"><span>Back to dashboard</span></a>
+  </div>
+</div>
+
+{% endblock %}
+
