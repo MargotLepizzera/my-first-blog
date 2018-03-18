@@ -8,7 +8,7 @@ It was built using Django framework, HTML, and CSS.
 
 ## Deployed Version
 
-You can find the last deployed version of the website over [here](gomardos.pythonanywhere.com)
+You can find the last deployed version of the website over [here](http://www.gomardos.pythonanywhere.com)
 
 ## Authors
 
