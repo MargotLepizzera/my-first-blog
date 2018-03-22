@@ -2,29 +2,44 @@
 
 {% block content %}
 
+{% load staticfiles %}
 
-<div class="container">
+
+<div class="container_dashboard">
   <br>
-  <h1>Your Dashboard</h1>
+  <div class="doctor">
+    <img src='{% static "images/margot.jpeg" %}' class="avatar-large"/>
+    <h3>{{ user.username }}</h3>
+    <h4>Médecin Généraliste à Paris</h4>
+  </div>
+
+
   <br>
   {% for report in reports %}
   <div class="row">
-    <div class="col-xs-12 col-lg-10">
+    <div class="col-xs-12 col-lg-8">
       <div class="card">
+        <div class=icon>
+          <i class="fas fa-play"></i>  <i class="fas fa-file-alt icon-report" href="{% url 'report_edit' pk=report.pk %}" ></i>
+        </div>
+
         <div class="card-description">
           <h2>{{ report.title}}</h2>
-          <p>{{ report.text}}</p>
+          <p>Patient(e): {{ report.text}}</p>
+
         </div>
         <div class="card-date">{{ report.published_date}}</div>
-        <a class="card-link" href="{% url 'report_detail' pk=report.pk %}">Learn more</a>
+        <a class="card-link" href="{% url 'report_detail' pk=report.pk %}"><i class="far fa-save"></i></a>
       </div>
     </div>
   </div>
   {% endfor %}
   <br>
-  <a href="{% url 'report_new' %}" class="btn btn-primary"><span>Ajouter un nouveau rapport</span></a>
+  <a href="{% url 'report_new' %}" class="btn btn-primary add-button"><span>Ajouter un nouveau rapport</span></a>
+  <br>
+  <br>
+  <br>
 </div>
-<br>
 
 {% endblock %}
 

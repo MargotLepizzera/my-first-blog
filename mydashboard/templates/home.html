@@ -14,11 +14,11 @@
 <body class="general">
 
 
-<div class="banner" style="background-image: url('static/image.jpeg');">
+<div class="banner" style="background-image: url('static/images/image.jpeg');">
       <div class="banner-content">
         <h1>ELIOT</h1>
         <p>The first pharmaceutical smart packaging</p>
-        <a class="btn btn-primary btn-lg" href="#project">Find out more</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'report_list'%}">Find out more</a>
       </div>
       <div class="navbar-wagon">
         <!-- Right Navigation -->
@@ -29,11 +29,11 @@
         	<a href="#team"  class="navbar-wagon-item navbar-wagon-link">Team</a>
 <!--             <a href="{% url 'home'%}"  class="navbar-wagon-item navbar-wagon-link">Home</a>
             <a href="{% url 'report_list'%}"  class="navbar-wagon-item navbar-wagon-link">Dashboard</a> -->
-            {% if user.authentificated %}
-              <a href="{% url 'logout'%}"  class="navbar-wagon-item navbar-wagon-link">Logout</a>
-            {% else %}
-              <a href="{% url 'login'%}"  class="navbar-wagon-item navbar-wagon-link">Login</a>
-            {% endif %}
+          {% if user.is_authenticated %}
+            <a href="{% url 'logout'%}"  class="navbar-wagon-item navbar-wagon-link">Logout</a>
+          {% else %}
+            <a href="{% url 'login'%}"  class="navbar-wagon-item navbar-wagon-link">Login</a>
+          {% endif %}
         </div>
       </div>
 </div>
@@ -54,15 +54,15 @@
 		<div class="conteneur">
 		    <div>
 				<!--#424242 pour le code couleur pour les flaticon à editer-->
-		    	<img src= 'static/fingerprint2.png' class="element"/>
+		    	<img src= 'static/images/fingerprint2.png' class="element"/>
 		    	<p>Customize</p>
 		    </div>
 		    <div>
-		    	<img src= 'static/collect2.png' class="element"/>
+		    	<img src= 'static/images/collect2.png' class="element"/>
 		    	<p>Collect</p>
 		    </div>
 		    <div>
-		    	<img src= 'static/monitor2.png' class="element"/>
+		    	<img src= 'static/images/monitor2.png' class="element"/>
 		    	<p>Monitor</p>
 		    </div>
 		</div>
@@ -83,30 +83,30 @@
 
 	    <div class="conteneur">
 	    	<div class="bloc">
-	        	<img src= 'static/display2.png' class="element-second"/>
+	        	<img src= 'static/images/display2.png' class="element-second"/>
 	        	<p class="bloc-caption">By default, Eliot displays the drug’s temperature</p>
-		    </div>      
-		    <div class="bloc">
-		     <img src= 'static/rotate2.png' class="element-second"/>
 		    </div>
 		    <div class="bloc">
-		      <img src= 'static/threshold2.png' class="element-second"/>
+		     <img src= 'static/images/rotate2.png' class="element-second"/>
+		    </div>
+		    <div class="bloc">
+		      <img src= 'static/images/threshold2.png' class="element-second"/>
 		      <p>Eliot allows users to quickly set up maximum & minimum temperature thresholds</p>
 		    </div>
 		    <div class="bloc">
-		     <img src= 'static/rotate2.png' class="element-second"/>
+		     <img src= 'static/images/rotate2.png' class="element-second"/>
 		    </div>
 		    <div class="bloc">
-		      <img src= 'static/thermometer2.png' class="element-second"/>
+		      <img src= 'static/images/thermometer2.png' class="element-second"/>
 		      <p>Whenever temperature gets too high or too low, Eliot warns you by displaying a message and emitting a sound</p>
 		    </div>
 		    <div class="bloc">
-		     <img src= 'static/rotate2.png' class="element-second"/>
+		     <img src= 'static/images/rotate2.png' class="element-second"/>
 		    </div>
 		    <div class="bloc">
-		      <img src= 'static/monitoring2.png' class="element-second"/>
+		      <img src= 'static/images/monitoring2.png' class="element-second"/>
 		      <p>Eliot builds a traceability report that the user can regularly check to make sure medicine are still valid</p>
-			</div>      
+			</div>
 		</div>
 
 		<div id = "usecases">
@@ -114,18 +114,18 @@
 			<div class="conteneur">
 		    	<div class="row">
 			    	<div class="col-xs-12 col-sm-4 perso">
-				    	<img src='static/doctor.svg'/>
+				    	<img src='static/images/doctor.svg'/>
 				    	<p>Lisa is a pharmacist. She very regularly deals with heat-sensitive medicines such as cancer, HIV or multiple sclerosis treatments. She knows most transport companies monitor drugs’ temperature but she wants to make absolutely sure she does not sell inefficient products to her beloved customers.</p>
 				    </div>
 				    <div class="col-xs-12 col-sm-4 perso">
-				    	<img src='static/girl.svg'/>
+				    	<img src='static/images/girl.svg'/>
 				    	<p>Lola travels a lot. She has diabetes so she regularly takes medicine. When she is in hot countries, she is sometimes afraid her drugs are no longer effective because of the heat. She would like to have a device allowing her to track her medicine temperature.</p>
 				    </div>
 				    <div class="col-xs-12 col-sm-4 perso">
-				    	<img src='static/boy.svg'/>
+				    	<img src='static/images/boy.svg'/>
 				    	<p>Aleksander needs to do the tetanus vaccination. He bought the product at the drugstore and will bring it to the doctor next week for the injection. He does not know about heat-sensitive medicine and leaves the tetanus vaccination on his desk, in the 25°C environement for 5 days. He has not idea the medicine is probably no longer efficient.</p>
 					</div>
-		    	</div> 
+		    	</div>
 			</div>
 		</div>
 
@@ -143,11 +143,11 @@
 
 		<div class="row">
 			<div class="col-sm-6 first">
-				<img src='static/hardware.svg'/>
+				<img src='static/images/hardware.svg'/>
 				<p>HARDWARE</p>
 					<div class="row">
 						<div class="col-sm-6 rest">
-							<img src='static/microbit.png'/>
+							<img src='static/images/microbit.png'/>
 						</div>
 						<div class="col-sm-6 rest">
 							<p>Micro:bit with an embedded temperature sensor</p>
@@ -155,7 +155,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 rest">
-							<img src='static/battery.jpg'/>
+							<img src='static/images/battery.jpg'/>
 						</div>
 						<div class="col-sm-6 rest">
 							<p>Micro:bit enclosed battery box</p>
@@ -163,7 +163,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 rest">
-							<img src='static/minispeaker.jpg'/>
+							<img src='static/images/minispeaker.jpg'/>
 						</div>
 						<div class="col-sm-6 rest">
 							<p>Micro:bit Mini- Speaker</p>
@@ -171,11 +171,11 @@
 					</div>
 			</div>
 			<div class="col-sm-6 first">
-				<img src='static/software.svg'/>
+				<img src='static/images/software.svg'/>
 				<p>SOFTWARE</p>
 					<div class="row">
 						<div class="col-sm-6 rest">
-							<img src='static/micropython.jpg'/>
+							<img src='static/images/micropython.jpg'/>
 						</div>
 						<div class="col-sm-6 rest">
 							<p>MicroPython</p>
@@ -183,7 +183,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 rest">
-							<img src='static/htmlcss.svg'/>
+							<img src='static/images/htmlcss.svg'/>
 						</div>
 						<div class="col-sm-6 rest">
 							<p>HTML/CSS</p>
@@ -191,7 +191,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-6 rest">
-							<img src='static/javascript.png'/>
+							<img src='static/images/javascript.png'/>
 						</div>
 						<div class="col-sm-6 rest">
 							<p>JavaScript</p>
@@ -206,7 +206,7 @@
 </section>
 
 
-<div id="banner2" style="background-image: url('static/image2.jpg');">
+<div id="banner2" style="background-image: url('static/images/image2.jpg');">
 </div>
 
 <section id="team">
@@ -217,15 +217,15 @@
 		</div>
 		<div class="conteneur">
 			<div class="col-xs-12 col-sm-4 team">
-			    	<img src='static/eleonore.jpg'/>
+			    	<img src='static/images/eleonore.png'/>
 			    	<p>Eléonore DELAIRE</p>
 			</div>
 			<div class="col-xs-12 col-sm-4 team">
-			    	<img src='static/camille.jpeg'/>
+			    	<img src='static/images/camille.jpeg'/>
 			    	<p>Camille RAPINAT</p>
 			</div>
 			<div class="col-xs-12 col-sm-4 team">
-			    	<img src='static/margot.jpeg'/>
+			    	<img src='static/images/margot.jpeg'/>
 			    	<p>Margot LEPIZZERA</p>
 			</div>
 		</div>
@@ -240,7 +240,7 @@
 </div>
 
 <div id="reachout-container">
-	<div id="reachout-block" style="background-image: url('static/image4.jpg');"></div>
+	<div id="reachout-block" style="background-image: url('static/images/image4.jpg');"></div>
 	<div id="reachout-text">
 		<p class = "align-left">Want to know more about Eliot?</p>
 		<a class="btn btn-primary btn-lg align-right" href="{% url 'report_list' %}">Reach Out!</a>
@@ -256,10 +256,6 @@ https://www.w3schools.com/bootstrap/bootstrap_grid_examples.asp -->
 <div class="footer">
     <div class="footer-links">
       <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
     <div class="footer-copyright">
      This website was made with <i class="fa fa-heart"></i> by Margot, Camille and Eléonore

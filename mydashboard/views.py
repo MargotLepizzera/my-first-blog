@@ -3,32 +3,41 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Report, Temperature
 from django.utils import timezone
 import datetime as dt
+import time
 import os
 
 from django.conf import settings
 from django.conf.urls.static import static
 from .forms import ReportForm
-
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.generic import View
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from microfs import ls, rm, put, get, get_serial
+from django.db.models import Avg
+
 
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def report_list(request):
-	reports = Report.objects.all()
-	return render(request, 'mydashboard/report_list.html', {'reports': reports})
+    reports = Report.objects.all()
+    user = request.user
+    return render(request, 'mydashboard/report_list.html', {'reports': reports, 'user': user})
 
+@login_required
 def report_detail(request, pk):
     report = get_object_or_404(Report, pk=pk)
     temperatures = Temperature.objects.filter(report_id = pk)
-    return render(request, 'mydashboard/report_detail.html', {'report': report , 'temperatures': temperatures})
+    data = round(Temperature.objects.filter(report_id = pk).aggregate(Avg('temperature'))['temperature__avg'], 1)
+    return render(request, 'mydashboard/report_detail.html', {'report': report , 'temperatures': temperatures, 'data': data})
 
 def get_and_create():
-  input_excel = os.path.join(settings.MEDIA_ROOT, 'mydashboard/data.csv')
+  fichier = 'data.csv'
+  get(fichier, target=None, serial=None)
+  input_excel = os.path.join(settings.MEDIA_ROOT, 'data.csv')
   f = open(input_excel, 'r')
   nLine = 2
   lines = f.readlines()[nLine-1:]
@@ -39,10 +48,14 @@ def get_and_create():
     ligne = Temperature()
     ligne.report_id = id_max + 1
     ligne.temperature = int(array[1])
-    ligne.registered_date = dt.datetime.strptime(array[2][:20], ' %Y-%m-%d %H:%M:%S')
+    index = line.index(",") + 6
+    millis = line[index:]
+    ligne.registered_date = dt.datetime.now() + dt.timedelta(milliseconds = -float(millis))
     ligne.save()
   f.close()
 
+
+@login_required
 def report_new(request):
     if request.method == "POST":
         form = ReportForm(request.POST)
@@ -57,19 +70,19 @@ def report_new(request):
         form = ReportForm()
     return render(request, 'mydashboard/report_edit.html', {'form': form})
 
-# def report_edit(request, pk):
-#     report = get_object_or_404(Post, pk=pk)
-#     if request.method == "POST":
-#         form = ReportForm(request.POST, instance=report)
-#         if form.is_valid():
-#             report = form.save(commit=False)
-#             report.author = request.user
-#             report.published_date = timezone.now()
-#             report.save()
-#             return redirect('report_detail', pk=report.pk)
-#     else:
-#         form = ReportForm(instance=report)
-#     return render(request, 'mydashboard/report_edit.html', {'form': form})
+def report_edit(request, pk):
+    report = get_object_or_404(Report, pk=pk)
+    if request.method == "POST":
+        form = ReportForm(request.POST, instance=report)
+        if form.is_valid():
+            report = form.save(commit=False)
+            report.author = request.user
+            report.published_date = timezone.now()
+            report.save()
+            return redirect('report_detail', pk=report.pk)
+    else:
+        form = ReportForm(instance=report)
+    return render(request, 'mydashboard/report_edit.html', {'form': form})
 
 class ChartData(APIView):
     def get(self, request, format=None):
@@ -84,3 +97,4 @@ class ChartData(APIView):
           "default": default_items,
         }
         return Response(data)
+

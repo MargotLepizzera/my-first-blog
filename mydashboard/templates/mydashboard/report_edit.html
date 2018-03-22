@@ -1,18 +1,25 @@
 {% extends 'mydashboard/base.html' %}
 
 {% block content %}
-<div class="container" style="height:100%; width:100%; background-color: #eff0f2">
-  <div class="form">
-    <h1>New Report</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-      {{ form.as_p }}
-      <p>Connect your microbit and </p>
-      <button type="submit" class="save btn btn-primary">Save data in this report</button>
-    </form>
+<div class="container">
+  <div class="col-xs-12 col-lg-12">
 
-    <a href="{% url 'report_list' %}" class="top-menu"><span>Back to dashboard</span></a>
+
+    <div class="form">
+      <h2>Un nouveau patient à vacciner ?</h2>
+      <form method="POST" class="post-form">{% csrf_token %}
+        <p>Rajouter un titre à votre nouveau rapport</p>
+        <label for="title" placeholder="Titre">{{ form.title }}</label><br />
+        <br>
+        <p>Nom du patient(e) concerné(e) et commentaire éventuel</p>
+        <label for="title" placeholder="Titre">{{ form.text }}</label><br />
+        <br>
+        <button type="submit" class="save btn btn-primary">Connect your microbit and Save data in this report</button>
+      </form>
+      <br>
+      <a href="{% url 'report_list' %}" class="top-menu"><span>Back to dashboard</span></a>
+    </div>
   </div>
 </div>
-
 {% endblock %}
 
