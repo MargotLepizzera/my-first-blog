@@ -150,7 +150,7 @@
   border-width: 1px;
   text-align: center;
   width:400px;
-  height: 250px;
+  height: 260px;
   padding:10px;
   margin:10px;
 }
@@ -205,8 +205,22 @@
 
 /*Testimonials section*/
 
+#testimonials {
+  width:800px; 
+  height: 150px;
+}
+
 #testimonials h3 {
   font-family: "Batang";
+  height: 100px;
+}
+
+#arrow-container {
+  width:120%;
+}
+
+.arrow {
+  color: #585858;
 }
 
 /*Reach Out section*/
@@ -242,13 +256,13 @@
 
 /*Footer visualization*/
 .footer {
-  background: #1e3760;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100px;
   padding: 0px 50px;
-  color: #d0d1dc;
+  color: #585858;
 }
 .footer-links {
   display: flex;
@@ -263,6 +277,10 @@
 
 .footer .fa-heart {
   color: #D23333;
+}
+
+.footer .fa-github {
+  color: #585858;
 }
 
 .body {
