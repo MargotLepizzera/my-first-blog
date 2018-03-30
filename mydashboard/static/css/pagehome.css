@@ -150,7 +150,7 @@
   border-width: 1px;
   text-align: center;
   width:400px;
-  height: 250px;
+  height: 260px;
   padding:10px;
   margin:10px;
 }
@@ -205,8 +205,27 @@
 
 /*Testimonials section*/
 
+#testimonials {
+    width:800px; 
+    height: 150px
+}
+
 #testimonials h3 {
   font-family: "Batang";
+}
+
+.mySlides {display:none}
+/*#mySlides1 {display:block}
+#mySlides2 {display:none}*/
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+
+#arrow-container {
+  width:120%
+}
+
+.arrow {
+    color: #585858 ;
 }
 
 /*Reach Out section*/

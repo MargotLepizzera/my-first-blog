@@ -23,8 +23,9 @@ def home(request):
 
 @login_required
 def report_list(request):
-    reports = Report.objects.all()
     user = request.user
+    reports = Report.objects.filter(author__id=user.id)
+    
     return render(request, 'mydashboard/report_list.html', {'reports': reports, 'user': user})
 
 @login_required
