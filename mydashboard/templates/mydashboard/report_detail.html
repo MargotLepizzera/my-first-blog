@@ -86,14 +86,14 @@ function openTab(evt, action) {
 </script>
 
 <div class="container" class="col-lg-offset-2 col-lg-8 col-sm-4">
-  <h1>Rapport de traçabilité pour le vaccin de {{report.text}}</h1>
+  <h1>Tracking report for {{report.text}}'s vaccine</h1>
   <br>
   <br>
-  <p class="intro">Ce rapport extrait le {{report.created_date}} répertorie la température de ce médicament pour vous.</p>
+  <p class="intro">This report was extracted {{report.created_date}} with the following data:</p>
   <br>
   <br>
   <div class="visual">
-    <div id="temperature"><p>Moyenne de conservation:</p>
+    <div id="temperature"><p>Preservation Temperature Average:</p>
     <h1><strong>{{ data }}°C</strong></h1></div>
   </div >
 
@@ -101,7 +101,7 @@ function openTab(evt, action) {
 
   <div class="tabs">
     <a class="tab active" href="#Table" onclick="openTab(event, 'Table')">Table</a>
-    <a class="tab" href="#Graphe" onclick="openTab(event, 'Graphe')">Graphe</a>
+    <a class="tab" href="#Graphe" onclick="openTab(event, 'Graphe')">Graph</a>
   </div>
 
   <div id="Graphe" class="tab_content">
@@ -111,9 +111,9 @@ function openTab(evt, action) {
   <div id="Table" class="tab_content active">
     <table style="width:100%">
       <tr>
-        <th>Identifiant</th>
-        <th>Température</th>
-        <th>Date d'enregistrement</th>
+        <th>ID</th>
+        <th>Temperature</th>
+        <th>Registration Date and Time</th>
       </tr>
       {% for temperature in temperatures %}
       <tr>
@@ -126,12 +126,15 @@ function openTab(evt, action) {
   </div>
   <br>
   <br>
-  <a href="{% url 'report_list' %}" class="btn btn-primary add-button"><span>Retour au dashboard</span></a>
+  <a href="{% url 'report_list' %}" class="btn btn-primary add-button"><span>Back to Dashboard</span></a>
   <br>
   <br>
+  <i href="{% url 'report_list'%}" class="fas fa-edit icon-save" ></i>
+<!--   <a href="{% url 'report_list'%}"></a><i class="fas fa-edit icon-save" ></i>
+ -->
+
 
 </div>
-<br>
 
 
 {% endblock %}

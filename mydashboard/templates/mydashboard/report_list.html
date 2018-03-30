@@ -7,10 +7,11 @@
 
 <div class="container_dashboard">
   <br>
-  <div class="doctor" style="background-image:url('/static/images/electro.jpg')">
+
+  <div class="doctor" style="background-image: url('/static/images/electro.jpg'); background-position: center;">
     <img src='{% static "images/margot.jpeg" %}' class="avatar-large"/>
     <h3>{{ user.username }}</h3>
-    <h4>Médecin Généraliste à Paris</h4>
+    <h4>General Practitioner in Paris</h4>
   </div>
 
 
@@ -20,12 +21,12 @@
     <div class="col-xs-12 col-lg-8">
       <div class="card">
         <div class=icon>
-          <i class="fas fa-play"></i>  <i class="fas fa-file-alt icon-report" href="{% url 'report_edit' pk=report.pk %}" ></i>
+          <i class="fas fa-play"></i>  <i class="fas fa-file-alt icon-report" ></i>
         </div>
 
         <div class="card-description">
           <h2>{{ report.title}}</h2>
-          <p>Patient(e): {{ report.text}}</p>
+          <p>Patient Name: {{ report.text}}</p>
 
         </div>
         <div class="card-date">{{ report.published_date}}</div>
@@ -35,7 +36,7 @@
   </div>
   {% endfor %}
   <br>
-  <a href="{% url 'report_new' %}" class="btn btn-primary add-button"><span>Ajouter un nouveau rapport</span></a>
+  <a href="{% url 'report_new' %}" class="btn btn-primary add-button"><span>Add a new report</span></a>
   <br>
   <br>
   <br>

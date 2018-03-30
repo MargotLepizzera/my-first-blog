@@ -1,0 +1,62 @@
+
+.form {
+  text-align: left;
+  width: 100%;
+  height: 1100px;
+  background-color: #E9EEF1;
+}
+
+/*login css*/
+
+.wrapper {
+  margin-top: 200px;
+  width: 26%;
+  height: 100%;
+  margin-left: 510px;
+
+}
+
+.form-signin {
+  max-width: 450px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+
+  .form-signin-heading {
+    margin-bottom: 50px;
+  }
+}
+
+
+  .form-control {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    @include box-sizing(border-box);
+
+    &:focus {
+      z-index: 2;
+    }
+  }
+
+  input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  input[type=text].formcontrol {
+    background-color: white;
+    width: 100%;
+}
+
+  input[type="password"] {
+    margin-bottom: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
