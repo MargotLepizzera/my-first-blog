@@ -25,7 +25,7 @@ def home(request):
 def report_list(request):
     user = request.user
     reports = Report.objects.filter(author__id=user.id)
-    
+
     return render(request, 'mydashboard/report_list.html', {'reports': reports, 'user': user})
 
 @login_required
@@ -43,7 +43,10 @@ def get_and_create():
   nLine = 2
   lines = f.readlines()[nLine-1:]
   del lines[0]
-  id_max = Report.objects.latest('id').id
+  if Report.objects.count() == 0:
+    id_max = 0
+  else:
+    id_max = Report.objects.latest('id').id
   for line in lines:
     array =  line.split(',')
     ligne = Temperature()
@@ -51,7 +54,7 @@ def get_and_create():
     ligne.temperature = int(array[1])
     index = line.index(",") + 6
     millis = line[index:]
-    ligne.registered_date = dt.datetime.now() + dt.timedelta(milliseconds = -float(millis))
+    ligne.registered_date = dt.datetime.now(timezone.utc) + dt.timedelta(milliseconds = -float(millis))
     ligne.save()
   f.close()
 
