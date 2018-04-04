@@ -10,15 +10,18 @@
 
   <div class="doctor" style="background-image: url('/static/images/electro.jpg'); background-position: 0% 55.5%;">
     <img src='{% static "images/margot.jpeg" %}' class="avatar-large"/>
-    <h3>{{ user.username }}</h3>
-    <h4>General Practitioner in Paris</h4>
+    <div>
+      <h3>{{ user.username }}</h3>
+      <h4>General Practitioner in Paris</h4>
+    </div>
+
   </div>
 
 
   <br>
   {% for report in reports %}
   <div class="row">
-    <div class="col-xs-12 col-lg-8">
+    <div class="col-xs-10 col-lg-8">
       <div class="card">
         <div class=icon>
           <i class="fas fa-play"></i>  <i class="fas fa-file-alt icon-report" ></i>

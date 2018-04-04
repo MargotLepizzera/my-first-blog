@@ -19,7 +19,7 @@
 </head>
 <body>
   <div class="navbar-wagon">
-    <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <div class="navbar-wagon-right hidden-xs">
         <a href="{% url 'home'%}"  class="navbar-wagon-item navbar-wagon-link">Home</a>
         <a href="{% url 'report_list'%}"  class="navbar-wagon-item navbar-wagon-link">Dashboard</a>
         {% if user.is_authenticated %}
@@ -27,6 +27,21 @@
         {% else %}
           <a href="{% url 'login'%}"  class="navbar-wagon-item navbar-wagon-link">Login</a>
         {% endif %}
+    </div>
+    <!-- Profile picture with dropdown list -->
+    <div class="navbar-wagon-drop hidden-lg hidden-md hidden-sm">
+      <div class="dropdown">
+        <span style="font-size:30px;cursor:pointer" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">&#9776;</span>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="{% url 'home'%}">Home</a></li>
+          <li><a href="{% url 'report_list'%}">Dashboard</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'logout'%}" >Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'login'%}" >Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
   </div>
 
